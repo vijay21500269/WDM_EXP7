@@ -1,5 +1,5 @@
 ### EX7 Implementation of Link Analysis using HITS Algorithm
-### DATE: 
+
 ### AIM: To implement Link Analysis using HITS Algorithm in Python.
 ### Description:
 <div align = "justify">
@@ -43,25 +43,24 @@ def hits_algorithm(adjacency_matrix, max_iterations=100, tol=1.0e-6):
     hub_scores = np.ones(num_nodes)
     
     for i in range(max_iterations):
-        # Authority update
-
-             /*WRITE YOUR CODE HERE
+         new_authority_scores = np.dot(adjacency_matrix.T, hub_scores)
+        new_authority_scores /= np.linalg.norm(new_authority_scores, ord=2)  # Normalizing
         
         # Hub update
-
-             /*WRITE YOUR CODE HERE
+        new_hub_scores = np.dot(adjacency_matrix, new_authority_scores)
+        new_hub_scores /= np.linalg.norm(new_hub_scores, ord=2)  # Normalizing
         
         # Check convergence
-
-             /*WRITE YOUR CODE HERE
+        authority_diff = np.linalg.norm(new_authority_scores - authority_scores, ord=2)
+        hub_diff = np.linalg.norm(new_hub_scores - hub_scores, ord=2)
         
         if authority_diff < tol and hub_diff < tol:
             break
         
         authority_scores = new_authority_scores
         hub_scores = new_hub_scores
-    
-    return authority_scores, hub_scores
+        
+        
 
 # Example adjacency matrix (replace this with your own data)
 # For simplicity, using a random adjacency matrix
@@ -93,5 +92,8 @@ plt.show()
 ```
 
 ### Output:
+![image](https://github.com/Prethiveerajan/WDM_EXP7/assets/94233064/6bcce825-63d8-460c-b183-392ebd4df910)
+
 
 ### Result:
+Thus Link Analysis using HITS Algorithm in Python is successfully implemented.
